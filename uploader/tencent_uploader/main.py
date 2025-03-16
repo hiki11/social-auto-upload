@@ -48,6 +48,23 @@ async def cookie_auth(account_file):
             tencent_logger.success("[+] cookie 有效")
             return True
 
+async def watch(account_file):
+    async with async_playwright() as playwright:
+        # 使用 Chromium (这里使用系统内浏览器，用chromium 会造成h264错误
+        browser = await playwright.chromium.launch(headless=False, executable_path=LOCAL_CHROME_PATH)
+        # 创建一个浏览器上下文，使用指定的 cookie 文件
+        context = await browser.new_context(storage_state=f"{account_file}")
+        context = await set_init_script(context)
+
+        # 创建一个新的页面
+        page = await context.new_page()
+        # 访问指定的 URL
+        # await page.goto("https://channels.weixin.qq.com/platform/post/create")
+        await page.goto("https://channels.weixin.qq.com/platform")
+        await page.pause()
+
+        await context.storage_state(path=f"{account_file}")  # 保存cookie
+        tencent_logger.success('  [-]cookie更新完毕！')
 
 async def get_tencent_cookie(account_file):
     async with async_playwright() as playwright:
@@ -163,7 +180,7 @@ class TencentVideo(object):
         if self.publish_date != 0:
             await self.set_schedule_time_tencent(page, self.publish_date)
         # 添加短标题
-        await self.add_short_title(page)
+        # await self.add_short_title(page)
 
         await self.click_publish(page)
 
@@ -227,7 +244,7 @@ class TencentVideo(object):
         await page.keyboard.type(self.title)
         await page.keyboard.press("Enter")
         for index, tag in enumerate(self.tags, start=1):
-            await page.keyboard.type("#" + tag)
+            # await page.keyboard.type("#" + tag)
             await page.keyboard.press("Space")
         tencent_logger.info(f"成功添加hashtag: {len(self.tags)}")
 

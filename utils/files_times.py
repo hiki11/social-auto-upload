@@ -33,7 +33,8 @@ def get_title_and_hashtags(filename):
     # 获取标题和 hashtag
     splite_str = content.strip().split("\n")
     title = splite_str[0]
-    hashtags = splite_str[1].replace("#", "").split(" ")
+    # hashtags = splite_str[1].replace("#", "").split(" ")
+    hashtags = [""]
 
     return title, hashtags
 

@@ -1,0 +1,32 @@
+py cli_main.py tencent 智慧文史 upload "D:\software\social-auto-upload-main\videos\6-1.mp4" -pt 1 -t "2025-03-16 18:00"
+py cli_main.py tencent 雄才文化 upload "D:\software\social-auto-upload-main\videos\8-1.mp4" -pt 1 -t "2025-03-16 18:00"
+py cli_main.py tencent 老赵说文史 upload "D:\software\social-auto-upload-main\videos\10-1.mp4" -pt 1 -t "2025-03-16 18:00"
+py cli_main.py tencent 智者说文史 upload "D:\software\social-auto-upload-main\videos\11-1.mp4" -pt 1 -t "2025-03-16 18:00"
+py cli_main.py tencent 乔木说文史 upload "D:\software\social-auto-upload-main\videos\12-1.mp4" -pt 1 -t "2025-03-16 18:00"
+
+
+py cli_main.py tencent 智慧文史 upload "D:\software\social-auto-upload-main\videos\6-2.mp4" -pt 1 -t "2025-03-16 20:00"
+py cli_main.py tencent 雄才文化 upload "D:\software\social-auto-upload-main\videos\8-2.mp4" -pt 1 -t "2025-03-16 20:00"
+py cli_main.py tencent 老赵说文史 upload "D:\software\social-auto-upload-main\videos\10-2.mp4" -pt 1 -t "2025-03-16 20:00"
+py cli_main.py tencent 智者说文史 upload "D:\software\social-auto-upload-main\videos\11-2.mp4" -pt 1 -t "2025-03-16 20:00"
+py cli_main.py tencent 乔木说文史 upload "D:\software\social-auto-upload-main\videos\12-2.mp4" -pt 1 -t "2025-03-16 20:00"
+
+
+py cli_main.py tencent 小玉天天说 upload 'D:\software\social-auto-upload-main\videos\“三观”到底是什么.mp4' -pt 1 -t "2025-04-14 19:00"
+
+
+py cli_main.py tencent 智慧文史 watch
+py cli_main.py tencent 雄才文化 watch
+py cli_main.py tencent 老赵说文史 watch
+py cli_main.py tencent 智者说文史 watch
+py cli_main.py tencent 乔木说文史 watch
+
+2025-03-12 18:30
+2025-03-12 20:00
+
+
+6【曾士强】——智慧文史【带货】
+8——雄才文化【带货】
+10——老赵说文史【带货】
+11——智者说文史
+12——乔木说文史

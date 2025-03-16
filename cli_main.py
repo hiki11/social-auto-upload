@@ -7,7 +7,7 @@ from pathlib import Path
 from conf import BASE_DIR
 from uploader.douyin_uploader.main import douyin_setup, DouYinVideo
 from uploader.ks_uploader.main import ks_setup, KSVideo
-from uploader.tencent_uploader.main import weixin_setup, TencentVideo
+from uploader.tencent_uploader.main import weixin_setup, TencentVideo, watch
 from uploader.tk_uploader.main_chrome import tiktok_setup, TiktokVideo
 from utils.base_social_media import get_supported_social_media, get_cli_action, SOCIAL_MEDIA_DOUYIN, \
     SOCIAL_MEDIA_TENCENT, SOCIAL_MEDIA_TIKTOK, SOCIAL_MEDIA_KUAISHOU
@@ -42,6 +42,8 @@ async def main():
             action_parser.add_argument("-pt", "--publish_type", type=int, choices=[0, 1],
                                        help="0 for immediate, 1 for scheduled", default=0)
             action_parser.add_argument('-t', '--schedule', help='Schedule UTC time in %Y-%m-%d %H:%M format')
+
+
 
     # 解析命令行参数
     args = parser.parse_args()
@@ -95,6 +97,18 @@ async def main():
             exit()
 
         await app.main()
+    # 在 main() 函数中添加：
+    elif args.action == 'watch':
+        print(f"Keeping browser open for {args.account_name} on {args.platform}")
+        browser = None
+        if args.platform == SOCIAL_MEDIA_DOUYIN:
+            browser = await douyin_setup(account_file, handle=True)
+        elif args.platform == SOCIAL_MEDIA_TIKTOK:
+            browser = await tiktok_setup(account_file, handle=True)
+        elif args.platform == SOCIAL_MEDIA_TENCENT:
+            await watch(account_file)
+        elif args.platform == SOCIAL_MEDIA_KUAISHOU:
+            browser = await ks_setup(account_file, handle=True)
 
 
 if __name__ == "__main__":
